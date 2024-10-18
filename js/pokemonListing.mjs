@@ -3,7 +3,7 @@ import { getEntitiesData } from "./utils.mjs";
 function pokemonListTemplate(entities) {
     return `<div>
     <h2>${entities.id}. ${entities.species.name}</h2>
-    <img src="">
+    <img src=${entities.sprites.other["official-artwork"].front_default}>
     </div>`
 }
 
