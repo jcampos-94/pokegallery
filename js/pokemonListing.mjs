@@ -1,3 +1,23 @@
-import { getSpeciesData } from "./utils.mjs";
+import { getEntitiesData } from "./utils.mjs";
 
-export let speciesData = getSpeciesData();
+function pokemonListTemplate(entities) {
+    return `<div>
+    <h2>${entities.id}. ${entities.species.name}</h2>
+    <img src="">
+    </div>`
+}
+
+export async function renderListWithTemplate() {
+    
+    // Get pokemon list from index
+    let listElement = document.querySelector(".pokemon-list")
+    
+    // Iterate entities data and render
+    let entitiesList = (await getEntitiesData());
+    console.log(entitiesList);
+    
+    entitiesList.forEach(entity => {
+        let card = pokemonListTemplate(entity);
+        listElement.innerHTML += card;
+    });
+}

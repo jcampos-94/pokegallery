@@ -1,2 +1,3 @@
-import {  } from "./pokemonListing.mjs";
+import { renderListWithTemplate } from "./pokemonListing.mjs";
 
+renderListWithTemplate();
