@@ -4,11 +4,6 @@ export async function fetchData(api) {
     if (response.ok) {
         let data = await response.json();
         return data;
-    } else {
-        console.error("Error fetching data:", response.status, response.statusText);
-        const text = await response.text(); // Get the response body as text
-        console.log("Response body:", text); // Log the response body
-        throw new Error(`Error fetching data: ${response.status}`);
     }
 }
 
