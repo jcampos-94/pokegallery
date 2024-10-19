@@ -1,0 +1,20 @@
+{
+  "name": "pokegallery",
+  "version": "1.0.0",
+  "description": "A site with handful infomation about Pokemon.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jcampos-94/pokegallery.git"
+  },
+  "author": "Juan Campos",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jcampos-94/pokegallery/issues"
+  },
+  "homepage": "https://github.com/jcampos-94/pokegallery#readme"
+}
