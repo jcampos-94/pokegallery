@@ -1,0 +1,44 @@
+/* Center the <h1> on the site */
+h1 {
+    text-align: center;
+}
+
+/* Center the <select> element */
+#selectRegion {
+    display: block;
+    margin: 20px auto; /* Centers the element and adds space above the cards */
+    font-size: 18px; /* Increases the font size */
+    padding: 10px; /* Adds padding to make the element larger */
+    width: 250px; /* Makes the <select> element wider */
+    text-align: center; /* Ensures the text is centered */
+    border-radius: 5px; /* Slight rounding of the corners */
+    border: 2px solid #ccc; /* Optional: Adds a border to the select element */
+}
+
+/* Styles for Pokemon cards */
+.pokemon-card {
+    border: 2px solid black; /* Black margin */
+    padding: 15px; /* Padding inside the card */
+    max-width: 300px; /* To fit at least one full card on smaller devices */
+    box-sizing: border-box; /* Ensure padding is included in the element's width */
+    margin: 10px; /* Minimum space between cards */
+    border-radius: 10px; /* Rounded corners */
+}
+
+.pokemon-card h2 {
+    text-align: center;
+}
+
+/* Display cards next to each other if there's space */
+.pokemon-list {
+    display: flex;
+    flex-wrap: wrap; /* Ensure cards wrap to the next line if needed */
+    justify-content: center; /* Space between cards */
+}
+
+/* Ensure images don't exceed the card size */
+.pokemon-card img {
+    max-width: 100%; /* Make sure the image fits within the card */
+    height: auto; /* Maintain the image's aspect ratio */
+    display: block; /* Remove extra space below images */
+}
