@@ -1,4 +1,4 @@
-import { fetchData, sortPokemonById, filterByRegion } from "./utils.mjs";
+import { fetchData, sortPokemonById, filterByRegion, formatPokemonName } from "./utils.mjs";
 
 // Define AbortController for future uses
 let currentAbortController = null;
@@ -19,10 +19,25 @@ const regionIdRanges = {
 };
 
 // Template for the Pokemon card
-function pokemonListTemplate(entities) {
+function pokemonCardTemplate(entities) {
     return `<div class="pokemon-card">
-    <h2>${entities.species.name}</h2>
-    <img src=https://resource.pokemon-home.com/battledata/img/pokei128/icon${entities.id.toString().padStart(4, '0')}_f00_s0.png>
+        <div class="pokemon-card-inner">
+            <!-- Front of the card -->
+            <div class="pokemon-card-front">
+                <h2>${formatPokemonName(entities.species.name)}</h2>
+                <img src=https://resource.pokemon-home.com/battledata/img/pokei128/icon${entities.id.toString().padStart(4, '0')}_f00_s0.png>
+            </div>
+            <!-- Back of the card -->
+            <div class="pokemon-card-back">
+                <p><b>Types:</b> "_"</p>
+                <p><b>Weight:</b> "_" Kg</p>
+                <p><b>HP:</b> "_"</p>
+                <p><b>Attack:</b> "_"</p>
+                <p><b>Defense:</b> "_"</p>
+                <p><b>Speed:</b> "_"</p>
+                <button class="details-btn">More Details</button>
+            </div>
+        </div>
     </div>`
 }
 
@@ -63,14 +78,14 @@ async function fetchAndRenderBatch(listElement, entitiesBatch, signal) {
     batchData.forEach(entity => {
         // Check if signal was not aborted before rendering
         if (!signal.aborted) {
-            let card = pokemonListTemplate(entity);
+            let card = pokemonCardTemplate(entity);
             listElement.innerHTML += card; // Render each Pokemon inmediately after getting its data
         }
     })
 }
 
 // Handle region selection and rendering
-export async function renderListWithTemplate(region) {
+export async function renderCardWithTemplate(region) {
     // Get Pokemon-list element from index.html
     let listElement = document.querySelector(".pokemon-list");
 
