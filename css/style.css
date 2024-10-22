@@ -41,7 +41,6 @@ h1 {
 .pokemon-card-back {
     display: flex;
     flex-direction: column; /* Stack children vertically */
-    align-items: center; /* Center children horizontally */
     position: absolute; /* Overlap front and back of the card */
     width: 100%; /* Full width of the card */
     height: 100%; /* Full heigth of the card */
@@ -55,6 +54,7 @@ h1 {
 }
 
 .pokemon-card-front {
+    align-items: center; /* Center children horizontally */
     justify-content: center; /* Center content on the front */
 }
 
