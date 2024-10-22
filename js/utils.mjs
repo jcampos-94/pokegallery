@@ -56,7 +56,7 @@ export function formatPokemonName(name) {
 // General function to return a comma separated list
 // from an array extracted from the API
 export function getPropertyString(entities, property, key) {
-    return entities[property].map(item => item[key].name.split("-").join(" ")).join(', ');
+    return entities[property].map(item => item[key].name.split("-").map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(" ")).join(', ');
 }
 
 // Return the total sum of each base stat value
