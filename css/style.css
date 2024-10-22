@@ -19,14 +19,15 @@ h1 {
 .pokemon-card {
     border: 2px solid black; /* Black margin */
     padding: 15px; /* Padding inside the card */
-    max-width: 300px; /* To fit at least one full card on smaller devices */
+    width: 165px; /* To fit at least one full card on smaller devices */
+    height: 250px; /* To ensure a uniform size on all cards */
     box-sizing: border-box; /* Ensure padding is included in the element's width */
     margin: 10px; /* Minimum space between cards */
     border-radius: 10px; /* Rounded corners */
 }
 
 .pokemon-card h2 {
-    text-align: center;
+    text-align: center; /* Center Pokemon name */
 }
 
 /* Display cards next to each other if there's space */
@@ -41,4 +42,5 @@ h1 {
     max-width: 100%; /* Make sure the image fits within the card */
     height: auto; /* Maintain the image's aspect ratio */
     display: block; /* Remove extra space below images */
+    margin-bottom: 0.83em; /* Add some controlled space below images after deleting the extra one with the last command */
 }
