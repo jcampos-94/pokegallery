@@ -1,4 +1,4 @@
-import { fetchData, sortPokemonById, filterByRegion, formatPokemonName } from "./utils.mjs";
+import { fetchData, sortPokemonById, filterByRegion, formatPokemonName, getPropertyString, getTotalBaseStats } from "./utils.mjs";
 
 // Define AbortController for future uses
 let currentAbortController = null;
@@ -29,12 +29,9 @@ function pokemonCardTemplate(entities) {
             </div>
             <!-- Back of the card -->
             <div class="pokemon-card-back">
-                <p><b>Types:</b> "_"</p>
-                <p><b>Weight:</b> "_" Kg</p>
-                <p><b>HP:</b> "_"</p>
-                <p><b>Attack:</b> "_"</p>
-                <p><b>Defense:</b> "_"</p>
-                <p><b>Speed:</b> "_"</p>
+                <p><b>Types:</b> ${getPropertyString(entities, "types", "type")}</p>
+                <p><b>Abilities:</b> ${getPropertyString(entities, "abilities", "ability")}</p>
+                <p><b>Base Stats:</b> ${getTotalBaseStats(entities)}</p>
                 <button class="details-btn">More Details</button>
             </div>
         </div>

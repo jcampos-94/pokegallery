@@ -52,3 +52,14 @@ export function formatPokemonName(name) {
         .map(word => word.charAt(0).toUpperCase() + word.slice(1))
         .join(" ");
 }
+
+// General function to return a comma separated list
+// from an array extracted from the API
+export function getPropertyString(entities, property, key) {
+    return entities[property].map(item => item[key].name).join(', ');
+}
+
+// Return the total sum of each base stat value
+export function getTotalBaseStats(entities) {
+    return entities.stats.reduce((total, statObject) => total + statObject.base_stat, 0);
+}
