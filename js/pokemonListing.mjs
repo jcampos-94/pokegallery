@@ -25,7 +25,7 @@ function pokemonCardTemplate(entities) {
             <!-- Front of the card -->
             <div class="pokemon-card-front">
                 <h2>${formatPokemonName(entities.species.name)}</h2>
-                <img src=https://resource.pokemon-home.com/battledata/img/pokei128/icon${entities.id.toString().padStart(4, '0')}_f00_s0.png>
+                <img src=https://resource.pokemon-home.com/battledata/img/pokei128/icon${entities.id.toString().padStart(4,"0")}_f00_s0.png>
             </div>
             <!-- Back of the card -->
             <div class="pokemon-card-back">

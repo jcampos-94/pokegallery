@@ -13,15 +13,16 @@ regionDropdown.addEventListener("change", (event) => {
     }
 });
 
-// Select all the Pokemon cards
-document.addEventListener('DOMContentLoaded', () => {
+// Wait until the content is loaded
+document.addEventListener("DOMContentLoaded", () => {
+    // Select the pokemon list
+    const cardContainer = document.querySelector(".pokemon-list");
+    
     // Attach click event to the parent container
-    const cardContainer = document.querySelector('.pokemon-list'); // Adjust this selector based on your HTML structure
-
-    cardContainer.addEventListener('click', (event) => {
-        const innerCard = event.target.closest('.pokemon-card-inner'); // Find the closest inner card clicked
+    cardContainer.addEventListener("click", (event) => {
+        const innerCard = event.target.closest(".pokemon-card-inner"); // Find the closest inner card clicked
         if (innerCard) {
-            innerCard.classList.toggle('flipped'); // Toggle the flip class
+            innerCard.classList.toggle("flipped"); // Toggle the flip class
         }
     });
 });

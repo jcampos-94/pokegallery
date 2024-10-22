@@ -30,9 +30,25 @@ export function formatPokemonName(name) {
         return "Nidoran &#9794";
     }
 
+    // Special cases for the Jagnmo-o line
+    if (name === "jangmo-o") {
+        return "Jangmo-o";
+    }
+    if (name === "hakamo-o") {
+        return "Hakamo-o";
+    }
+    if (name === "kommo-o") {
+        return "Kommo-o";
+    }
+
+    // Special case for Ho-Oh
+    if (name === "ho-oh") {
+        return "Ho-Oh";
+    }
+
     // Capitalize first letter of each word and replace hyphens with spaces
     return name
-        .split('-')
+        .split("-")
         .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-        .join(' ');
+        .join(" ");
 }
