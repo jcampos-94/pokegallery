@@ -21,8 +21,8 @@ const regionIdRanges = {
 // Template for the Pokemon card
 function pokemonListTemplate(entities) {
     return `<div class="pokemon-card">
-    <h2>${entities.id} - ${entities.species.name}</h2>
-    <img src=${entities.sprites.other["official-artwork"].front_default}>
+    <h2>${entities.species.name}</h2>
+    <img src=https://resource.pokemon-home.com/battledata/img/pokei128/icon${entities.id.toString().padStart(4, '0')}_f00_s0.png>
     </div>`
 }
 
