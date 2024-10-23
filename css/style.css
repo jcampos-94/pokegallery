@@ -85,9 +85,7 @@ p {
     border: 2px solid black; /* Black margin around the cards */
     border-radius: 10px; /* Rounded corners */
     box-shadow: 4px 4px 10px black; /* Shadow effect */
-    /*background-color: rgb(234, 234, 234); /* Background color for the cards*/
-    background-color: red; /* Background color for the cards*/
-
+    background-color: rgb(234, 234, 234); /* Background color for the cards*/
 }
 
 .pokemon-card-front {
