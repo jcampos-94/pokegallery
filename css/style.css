@@ -125,6 +125,7 @@ p {
 }
 
 .details-btn {
+    display: inline-block;
     padding: 10px 10px; /* Padding around the button text */
     background-color: #4CAF50; /* Button background color */
     color: white; /* Button text color */
@@ -132,7 +133,9 @@ p {
     border-radius: 5px; /* Rounded corners for the button */
     cursor: pointer; /* Change cursor to pointer on hover */
     font-family: "Jost", sans-serif;
-    font-size: 1.1em;
+    font-size: 1.2em;
+    text-align: center;
+    text-decoration: none;
 }
 
 /* Pokemon Cards End */

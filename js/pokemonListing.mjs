@@ -32,7 +32,7 @@ function pokemonCardTemplate(entities) {
                 <p><b>Types:</b> ${getPropertyString(entities, "types", "type")}</p>
                 <p><b>Abilities:</b> ${getPropertyString(entities, "abilities", "ability")}</p>
                 <p><b>Base Stats:</b> ${getTotalBaseStats(entities)}</p>
-                <button class="details-btn">More Details</button>
+                <a href="detailed/?id=${entities.id}" class="details-btn">More Details</a>
             </div>
         </div>
     </div>`
