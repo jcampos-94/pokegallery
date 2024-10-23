@@ -1,4 +1,8 @@
 import { renderCardWithTemplate } from "./pokemonListing.mjs";
+import { loadHeaderFooter } from "./utils.mjs";
+
+// Load Header
+loadHeaderFooter();
 
 // Select the Region dropdown
 const regionDropdown = document.querySelector("#selectRegion");
