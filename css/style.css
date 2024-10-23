@@ -2,10 +2,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Cardo:wght@700&family=Jost:ital,wght@0,100..900;1,100..900&family=Yellowtail&display=swap');
 
 /* Header Start */
+
+header {
+    text-align: center;
+}
+
+header a {
+    display: inline-block;
+    margin: 1vw 0;
+}
+
 header img {
     display: block;
     max-width: 80vw;
-    margin: 1vw auto;
 }
 /* Header End */
 
@@ -28,6 +37,7 @@ p {
     font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
+
 }
 
 /* Center the <select> element */
@@ -40,7 +50,7 @@ p {
     text-align: center; /* Ensures the text is centered */
     border-radius: 5px; /* Slight rounding of the corners */
     border: 2px solid black; /* Adds a border to the select element */
-    background-color: rgb(244, 244, 244);
+    background-color: rgb(244, 244, 244); /* Background color for the select element*/
 }
 
 
@@ -149,3 +159,14 @@ p {
     background-color: #45a049; /* Darker shade of the button color on hover */
 }
 /* Pokemon Cards Animation End */
+
+/* Footer Start */
+footer {
+    font-family: "Jost", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    text-align: center;
+    margin-top: 100px;
+    margin-bottom: 50px;
+}
+/* Footer End */
