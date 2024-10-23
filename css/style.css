@@ -24,6 +24,10 @@ body {
 /* Center the <h1> on the site */
 h1 {
     text-align: center;
+    font-family: "Yellowtail", serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 3em;
 }
 
 /* Center the <select> element */
@@ -35,7 +39,8 @@ h1 {
     width: 250px; /* Makes the <select> element wider */
     text-align: center; /* Ensures the text is centered */
     border-radius: 5px; /* Slight rounding of the corners */
-    border: 2px solid #ccc; /* Adds a border to the select element */
+    border: 2px solid black; /* Adds a border to the select element */
+    background-color: rgb(244, 244, 244); /* Background color for the select element*/
 }
 
 
@@ -69,8 +74,8 @@ h1 {
     backface-visibility: hidden; /* Hide the back side of the cards when not :hover */
     border: 2px solid black; /* Black margin around the cards */
     border-radius: 10px; /* Rounded corners */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow effect */
-    background-color: white; /* Background color for the cards*/
+    box-shadow: 4px 4px 10px black; /* Shadow effect */
+    background-color: rgb(235, 235, 235); /* Background color for the cards*/
 }
 
 .pokemon-card-front {
@@ -82,8 +87,13 @@ h1 {
     justify-content: space-around; /* Space elements evenly on the back */
 }
 
-.pokemon-card-back p, ul {
+.pokemon-card-back p {
     margin: 0; /* Remove default margin */
+    font-family: "Jost", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 1.2em;
 }
 
 /* Display cards next to each other if there's space */
@@ -109,12 +119,14 @@ h1 {
 }
 
 .details-btn {
-    padding: 5px 10px; /* Padding around the button text */
+    padding: 10px 10px; /* Padding around the button text */
     background-color: #4CAF50; /* Button background color */
     color: white; /* Button text color */
     border: none; /* Remove default border */
     border-radius: 5px; /* Rounded corners for the button */
     cursor: pointer; /* Change cursor to pointer on hover */
+    font-family: "Jost", serif;
+    font-size: 1.2em;
 }
 
 /* Pokemon Cards End */
