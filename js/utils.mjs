@@ -1,5 +1,3 @@
-// Extra note due to the revert (delete later)
-
 // Fetch Data with signal for AbortController
 export async function fetchData(api, signal) {
     let response = await fetch(api, { signal });
@@ -59,6 +57,32 @@ export function formatPokemonName(name) {
 // from an array extracted from the API
 export function getPropertyString(entities, property, key) {
     return entities[property].map(item => item[key].name.split("-").map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(" ")).join(', ');
+}
+
+// Return stats as <li> elements
+// from an array extracted from the API
+export function getStatsList(entity) {
+    return entity["stats"].map(item => 
+        `<li><b>${item["stat"].name.split("-").map(word => 
+            word.charAt(0).toUpperCase() + word.slice(1)
+        ).join(" ")}:</b> ${item.base_stat}</li>`
+    ).join(''); // Joining without separator so it returns a string of <li> elements
+}
+
+// Return types as images
+export async function getTypesAsImages(entity) {
+    const typeImages = await Promise.all(
+        entity.types.map(async (typeInfo) => {
+            const url = typeInfo.type.url;
+            const typeData = await fetchData(url);
+            const typeIconUrl = typeData.sprites["generation-viii"]["sword-shield"].name_icon;
+            console.log(typeIconUrl)
+            return `<img src="${typeIconUrl}" alt="${typeInfo.type.name} icon"/>`;
+        })
+    );
+
+    // Join all the <img> elements into one string
+    return typeImages.join('');
 }
 
 // Return the total sum of each base stat value
