@@ -1,5 +1,5 @@
 // Imports
-import { getParams, fetchData, formatPokemonName, getPropertyString, getStatsList, getTypesAsImages } from "./utils.mjs";
+import { getParams, fetchData, formatPokemonName, getPropertyString, getStatsList, getTypesAsImages, getAbilitiesAsButtons } from "./utils.mjs";
 
 // Define AbortController for future uses
 let currentAbortController = null;
@@ -20,7 +20,7 @@ async function pokemonDetailsTemplate(entity, speciesData) {
             <div class="pokemon-info">
                 <p><b>Height:</b> ${entity.height / 10} m</p>
                 <p><b>Weight:</b> ${entity.weight / 10} kg</p>
-                <p><b>Abilities:</b> ${getPropertyString(entity, "abilities", "ability")}</p>
+                <p><b>Abilities:</b> ${getAbilitiesAsButtons(entity)}</p>
             </div>
             <div class="pokemon-stats">
                 <p><b>Base Stats:</b>
