@@ -24,10 +24,10 @@ export function filterByRegion(entries, regionIdRanges, region) {
 export function formatPokemonName(name) {
     // Special cases for Nidoran
     if (name === "nidoran-f") {
-        return "Nidoran &#9792";
+        return "Nidoran <span class='material-symbols-outlined'>female</span>"; // Female symbol
     }
     if (name === "nidoran-m") {
-        return "Nidoran &#9794";
+        return "Nidoran <span class='material-symbols-outlined'>male</span>"; // Male symbol
     }
 
     // Special cases for the Jagnmo-o line
@@ -81,4 +81,12 @@ export async function loadHeaderFooter() {
     
     headerElement.innerHTML = header;
     footerElement.innerHTML = footer;
+}
+
+// Get parameters
+export function getParams(param) {
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    const id = urlParams.get(param);
+    return id;
 }

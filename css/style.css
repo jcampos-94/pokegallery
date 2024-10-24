@@ -40,6 +40,13 @@ p {
 
 }
 
+/* Symbols Settings */
+.material-symbols-outlined {
+    position: relative;
+    top: 4px;
+    left: -4px;
+}
+
 /* Center the <select> element */
 #selectRegion {
     display: block; /* Allows margin auto to work for centering */

@@ -32,7 +32,7 @@ function pokemonCardTemplate(entities) {
                 <p><b>Types:</b> ${getPropertyString(entities, "types", "type")}</p>
                 <p><b>Abilities:</b> ${getPropertyString(entities, "abilities", "ability")}</p>
                 <p><b>Base Stats:</b> ${getTotalBaseStats(entities)}</p>
-                <a href="detailed/?id=${entities.id}" class="details-btn">More Details</a>
+                <a href="detailed/?id=${entities.id}&form=0" class="details-btn">More Details</a>
             </div>
         </div>
     </div>`
@@ -83,7 +83,7 @@ async function fetchAndRenderBatch(listElement, entitiesBatch, signal) {
 
 // Handle region selection and rendering
 export async function renderCardWithTemplate(region) {
-    // Get Pokemon-list element from index.html
+    // Get pokemon-list element from index.html
     let listElement = document.querySelector(".pokemon-list");
 
     // Abort the previous fetch if it is still running
