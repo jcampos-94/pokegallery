@@ -64,25 +64,6 @@ export function getTotalBaseStats(entities) {
     return entities.stats.reduce((total, statObject) => total + statObject.base_stat, 0);
 }
 
-// Load partials templates
-async function loadTemplate(path) {
-    const res = await fetch(path);
-    const template = await res.text();
-    return template;
-}
-
-// Load Header and Footer
-export async function loadHeaderFooter() {
-    const header = await loadTemplate("/partials/header.html");
-    const footer = await loadTemplate("/partials/footer.html");
-
-    const headerElement = document.querySelector("header");
-    const footerElement = document.querySelector("footer");
-    
-    headerElement.innerHTML = header;
-    footerElement.innerHTML = footer;
-}
-
 // Get parameters
 export function getParams(param) {
     const queryString = window.location.search;
