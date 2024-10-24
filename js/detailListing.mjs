@@ -1,3 +1,5 @@
+// Extra note due to the revert (delete later)
+
 // Imports
 import { getParams, fetchData, formatPokemonName, getPropertyString, getStatsList, getTypesAsImages } from "./utils.mjs";
 

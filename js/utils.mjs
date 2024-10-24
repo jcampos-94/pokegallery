@@ -1,3 +1,5 @@
+// Extra note due to the revert (delete later)
+
 // Fetch Data with signal for AbortController
 export async function fetchData(api, signal) {
     let response = await fetch(api, { signal });
