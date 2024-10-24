@@ -24,10 +24,10 @@ export function filterByRegion(entries, regionIdRanges, region) {
 export function formatPokemonName(name) {
     // Special cases for Nidoran
     if (name === "nidoran-f") {
-        return "Nidoran &#9792";
+        return "Nidoran <span class='material-symbols-outlined'>female</span>"; // Female symbol
     }
     if (name === "nidoran-m") {
-        return "Nidoran &#9794";
+        return "Nidoran <span class='material-symbols-outlined'>male</span>"; // Male symbol
     }
 
     // Special cases for the Jagnmo-o line
@@ -59,6 +59,32 @@ export function getPropertyString(entities, property, key) {
     return entities[property].map(item => item[key].name.split("-").map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(" ")).join(', ');
 }
 
+// Return stats as <li> elements
+// from an array extracted from the API
+export function getStatsList(entity) {
+    return entity["stats"].map(item => 
+        `<li><b>${item["stat"].name.split("-").map(word => 
+            word.charAt(0).toUpperCase() + word.slice(1)
+        ).join(" ")}:</b> ${item.base_stat}</li>`
+    ).join(''); // Joining without separator so it returns a string of <li> elements
+}
+
+// Return types as images
+export async function getTypesAsImages(entity) {
+    const typeImages = await Promise.all(
+        entity.types.map(async (typeInfo) => {
+            const url = typeInfo.type.url;
+            const typeData = await fetchData(url);
+            const typeIconUrl = typeData.sprites["generation-viii"]["sword-shield"].name_icon;
+            console.log(typeIconUrl)
+            return `<img src="${typeIconUrl}" alt="${typeInfo.type.name} icon"/>`;
+        })
+    );
+
+    // Join all the <img> elements into one string
+    return typeImages.join('');
+}
+
 // Return the total sum of each base stat value
 export function getTotalBaseStats(entities) {
     return entities.stats.reduce((total, statObject) => total + statObject.base_stat, 0);
@@ -73,12 +99,20 @@ async function loadTemplate(path) {
 
 // Load Header and Footer
 export async function loadHeaderFooter() {
-    const header = await loadTemplate("partials/header.html");
-    const footer = await loadTemplate("partials/footer.html");
+    const header = await loadTemplate("/partials/header.html");
+    const footer = await loadTemplate("/partials/footer.html");
 
     const headerElement = document.querySelector("header");
     const footerElement = document.querySelector("footer");
     
     headerElement.innerHTML = header;
     footerElement.innerHTML = footer;
+}
+
+// Get parameters
+export function getParams(param) {
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    const id = urlParams.get(param);
+    return id;
 }

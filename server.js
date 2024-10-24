@@ -6,13 +6,25 @@ const hostname = '127.0.0.1';
 const port = 3000;
 
 const server = http.createServer((req, res) => {
+  // Strip the query string from the URL (e.g., ?id=25)
+  const reqUrl = req.url.split('?')[0];
+
   // Handle requests for static files like HTML, CSS, JS
-  let filePath = '.' + req.url;
-  if (filePath == './') {
+  let filePath = '.' + reqUrl;
+
+  if (filePath === './') {
+    // Serve index.html
     filePath = './index.html';
   }
 
+  if (filePath === './detailed/') {
+    // Serve index.html
+    filePath = './detailed/index.html';
+  }
+
+  // Get file extension
   const extname = String(path.extname(filePath)).toLowerCase();
+  
   const mimeTypes = {
     '.html': 'text/html',
     '.js': 'text/javascript',

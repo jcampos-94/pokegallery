@@ -22,22 +22,34 @@ body {
     background-color: rgb(187, 186, 186);
 }
 
-/* Center the <h1> on the site */
+
+/* General Font Settings */
 h1 {
-    text-align: center;
+    text-align: center; /* Center the <h1> on the site */
     font-family: "Yellowtail", cursive;
     font-weight: 400;
     font-style: normal;
     font-size: 3em;
 }
 
-/* General Font Settings */
-p {
+p, li {
     font-family: "Jost", sans-serif;
     font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
+}
 
+h2 {
+    font-family: "Cardo", serif;
+    font-weight: 700;
+    font-style: normal;
+}
+
+/* Symbols Settings */
+.material-symbols-outlined {
+    position: relative;
+    top: 4px;
+    left: -4px;
 }
 
 /* Center the <select> element */
@@ -111,9 +123,6 @@ p {
 
 .pokemon-card h2 {
     text-align: center;
-    font-family: "Cardo", serif;
-    font-weight: 700;
-    font-style: normal;
 }
 
 /* Ensure images don't exceed the card size */
@@ -125,6 +134,7 @@ p {
 }
 
 .details-btn {
+    display: inline-block;
     padding: 10px 10px; /* Padding around the button text */
     background-color: #4CAF50; /* Button background color */
     color: white; /* Button text color */
@@ -132,7 +142,9 @@ p {
     border-radius: 5px; /* Rounded corners for the button */
     cursor: pointer; /* Change cursor to pointer on hover */
     font-family: "Jost", sans-serif;
-    font-size: 1.1em;
+    font-size: 1.2em;
+    text-align: center;
+    text-decoration: none;
 }
 
 /* Pokemon Cards End */
@@ -170,3 +182,47 @@ footer {
     margin-bottom: 50px;
 }
 /* Footer End */
+
+/* Pokemon Details Start */
+#species-name {
+    margin-top: 0.67em;
+    margin-bottom: 0;
+}
+
+#species-number {
+    margin-top: 0;
+    margin-bottom: 0.67em;
+}
+
+.pokemon-form {
+    border: 2px solid black;
+    margin: 0 auto;
+    margin-left: 10px;
+    margin-right: 10px;
+    max-width: 500px;
+}
+
+.pokemon-form h2 {
+    text-align: center;
+    font-size: 2.2em;
+}
+
+#pokemon-img {
+    display: block;
+    max-width: 80vw;
+    margin: 0 auto;
+}
+
+.types-images {
+    display: flex;
+    max-width: 80vw;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+.types-images img {
+    max-width: 45%;
+    height: auto;
+    margin: 5px;
+}
+/* Pokemon Details End */
