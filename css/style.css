@@ -22,27 +22,22 @@ body {
     background-color: rgb(187, 186, 186);
 }
 
-
-/* General Font Settings */
+/* Center the <h1> on the site */
 h1 {
-    text-align: center; /* Center the <h1> on the site */
+    text-align: center;
     font-family: "Yellowtail", cursive;
     font-weight: 400;
     font-style: normal;
     font-size: 3em;
 }
 
-p, li {
+/* General Font Settings */
+p {
     font-family: "Jost", sans-serif;
     font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
-}
 
-h2 {
-    font-family: "Cardo", serif;
-    font-weight: 700;
-    font-style: normal;
 }
 
 /* Symbols Settings */
@@ -123,6 +118,9 @@ h2 {
 
 .pokemon-card h2 {
     text-align: center;
+    font-family: "Cardo", serif;
+    font-weight: 700;
+    font-style: normal;
 }
 
 /* Ensure images don't exceed the card size */
@@ -182,47 +180,3 @@ footer {
     margin-bottom: 50px;
 }
 /* Footer End */
-
-/* Pokemon Details Start */
-#species-name {
-    margin-top: 0.67em;
-    margin-bottom: 0;
-}
-
-#species-number {
-    margin-top: 0;
-    margin-bottom: 0.67em;
-}
-
-.pokemon-form {
-    border: 2px solid black;
-    margin: 0 auto;
-    margin-left: 10px;
-    margin-right: 10px;
-    max-width: 500px;
-}
-
-.pokemon-form h2 {
-    text-align: center;
-    font-size: 2.2em;
-}
-
-#pokemon-img {
-    display: block;
-    max-width: 80vw;
-    margin: 0 auto;
-}
-
-.types-images {
-    display: flex;
-    max-width: 80vw;
-    justify-content: center;
-    margin: 0 auto;
-}
-
-.types-images img {
-    max-width: 45%;
-    height: auto;
-    margin: 5px;
-}
-/* Pokemon Details End */
