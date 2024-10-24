@@ -85,6 +85,15 @@ export async function getTypesAsImages(entity) {
     return typeImages.join('');
 }
 
+// Get clickable abilities for the details site
+export function getAbilitiesAsButtons(entities) {
+    return entities.abilities
+        .map(item => 
+            `<button class="ability-button">${item.ability.name.split("-").map(word => 
+                word.charAt(0).toUpperCase() + word.slice(1)).join(" ")}</button>`)
+        .join(', ');
+}
+
 // Return the total sum of each base stat value
 export function getTotalBaseStats(entities) {
     return entities.stats.reduce((total, statObject) => total + statObject.base_stat, 0);
