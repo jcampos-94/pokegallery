@@ -1,4 +1,8 @@
 import { renderCardWithTemplate } from "./pokemonListing.mjs";
+import { setFavoritesLogo } from "./utils.mjs";
+
+// Set Logo
+setFavoritesLogo();
 
 // Select the Region dropdown
 const regionDropdown = document.querySelector("#selectRegion");
