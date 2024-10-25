@@ -38,7 +38,7 @@ p, li, .ability-button{
     font-style: normal;
 }
 
-h2 {
+h2, h3 {
     font-family: "Cardo", serif;
     font-weight: 700;
     font-style: normal;
@@ -237,6 +237,8 @@ footer {
 
 .pokemon-info {
     background-color: #dfdfdf;
+    position: relative;
+    overflow: hidden;
 }
 
 .ability-button {
@@ -251,6 +253,27 @@ footer {
     cursor: pointer;
 }
 
+.ability-description {
+    position: absolute;
+    left: 0;
+    width: calc(100%);
+    height: calc(100%);
+    box-sizing: border-box;
+    background-color: #000000;
+    color: white;
+    padding: 10px;
+    box-sizing: border-box;
+    z-index: 1;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    font-family: "Jost", sans-serif;
+    font-size: 0.8em;
+}
 
 /* Pokemon Details End */
 
@@ -262,5 +285,14 @@ footer {
 .ability-button:hover {
     color: #3b004f; /* Darker blue on hover */
     text-decoration-color: #3b004f; /* Change underline color on hover */
+}
+
+.hidden {
+    display: none;
+}
+
+.ability-description {
+    bottom: -100%;  /* Start hidden at the bottom */
+    transition: bottom 0.5s ease;
 }
 /* Pokemon Details Animation End */
