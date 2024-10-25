@@ -196,12 +196,11 @@ async function addToFavorites() {
         const formUrl = speciesData.varieties[form].pokemon.url;
         const formData = await fetchData(formUrl);
         
-        // Prepare data to be stored, including the details page URL
+        // Prepare data to be stored
         const pokemonData = {
             id: id,
             form: form,
             name: formData.name,
-            url: window.location.href, // Store current page URL for quick access later
             sprite: formData.sprites.other["official-artwork"].front_default
         };
         
@@ -212,9 +211,9 @@ async function addToFavorites() {
         if (!favorites.find(pokemon => pokemon.id === id && pokemon.form === form)) {
             favorites.push(pokemonData);
             localStorage.setItem('favorites', JSON.stringify(favorites));
-            alert(`${pokemonData.name} added to Favorites!`);
+            alert(`${formatPokemonName(pokemonData.name)} added to Favorites!`);
         } else {
-            alert(`${pokemonData.name} is already in Favorites.`);
+            alert(`${formatPokemonName(pokemonData.name)} is already in Favorites.`);
         }
     } catch (error) {
         console.error("Failed to add to favorites:", error);

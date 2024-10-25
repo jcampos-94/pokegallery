@@ -397,7 +397,27 @@ footer {
 }
 /* Pokemon Details Animation End */
 
-/* */
+/* Pokemon Favorites Start */
+.favorites-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.remove-btn {
+    display: inline-block;
+    padding: 10px;
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: "Jost", sans-serif;
+    font-size: 1.2em;
+    text-align: center;
+}
+
+/* Pokemon Favorites End */
 
 /* Responsiveness Starts */
 @media only screen and (min-width: 500px) {
