@@ -22,6 +22,11 @@ const server = http.createServer((req, res) => {
     filePath = './detailed/index.html';
   }
 
+  if (filePath === './favorites/') {
+    // Serve index.html
+    filePath = './favorites/index.html';
+  }
+
   // Get file extension
   const extname = String(path.extname(filePath)).toLowerCase();
   

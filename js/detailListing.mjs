@@ -35,6 +35,9 @@ async function pokemonDetailsTemplate(entity, speciesData) {
     <section id="available-forms">
         <h2>Available Forms<h2>
         <div class="available-forms">${await getFormsData(speciesData)}</div>
+    </section>
+    <section>
+        <button class="fav-btn">Add to Favorites</button>
     </section>`
 }
 

@@ -134,7 +134,7 @@ h2, h3 {
 
 .details-btn {
     display: inline-block;
-    padding: 10px 10px; /* Padding around the button text */
+    padding: 10px; /* Padding around the button text */
     background-color: #00528d; /* Button background color */
     color: white; /* Button text color */
     border: none; /* Remove default border */
@@ -312,6 +312,22 @@ footer {
     max-width: 100%;
 }
 
+.fav-btn {
+    display: block;
+    padding: 20px; /* Padding around the button text */
+    background-color: #00528d; /* Button background color */
+    color: white; /* Button text color */
+    border: none; /* Remove default border */
+    border-radius: 5px; /* Rounded corners for the button */
+    cursor: pointer; /* Change cursor to pointer on hover */
+    font-family: "Jost", sans-serif;
+    font-size: 1.4em;
+    text-align: center;
+    text-decoration: none;
+    max-width: 250px;
+    margin: 0 auto;
+}
+
 /* Pokemon Details End */
 
 /* Pokemon Details Animation Start */
@@ -341,7 +357,13 @@ footer {
     max-width: 270px;
     max-height: 279px;
 }
+
+.fav-btn:hover {
+    background-color: #3b004f; /* Button background color change */
+}
 /* Pokemon Details Animation End */
+
+/* */
 
 /* Responsiveness Starts */
 @media only screen and (min-width: 500px) {
