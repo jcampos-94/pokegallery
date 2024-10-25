@@ -13,7 +13,7 @@ async function pokemonDetailsTemplate(entity, speciesData) {
     <div class="pokemon-data">
         <section class="pokemon-form">
             <h2>${formatPokemonName(entity.name)}</h2>
-            <img id="pokemon-img" src=${entity.sprites.other["official-artwork"].front_default}>
+            <img id="pokemon-img" src=${entity.sprites.other["official-artwork"].front_default} alt="${entity.name}">
             <div class="types-images">${await getTypesAsImages(entity)}</div>
         </section>
         <section class="pokemon-details-right">
@@ -31,7 +31,18 @@ async function pokemonDetailsTemplate(entity, speciesData) {
                 <ul>${getStatsList(entity)}</ul>
             </div>
         </section>
-    </div>`
+    </div>
+    <section id="available-forms">
+        <h2>Available Forms<h2>
+        <div class="available-forms">${await getFormsData(speciesData)}</div>
+    </section>`
+}
+
+// Template for the Available Forms
+function pokemonFormsTemplate(entity, index, speciesData) {
+    return `<div class="form-card">
+            <a href="?id=${speciesData.id}&form=${index}"><img src=${entity.sprites.other["official-artwork"].front_default} alt="${entity.name}"></a>
+        </div>`
 }
 
 // Render data based on ID parameter
@@ -68,6 +79,33 @@ export async function renderDetailsWithTemplate() {
             console.error("Error fetching Pokemon data:", error);
         }
     }
+}
+
+// Render Forms data
+async function getFormsData(speciesData) {
+    const formsHtml = [];
+
+    // Loop through each variety (form) in speciesData
+    for (let index = 0; index < speciesData.varieties.length; index++) {
+        const variety = speciesData.varieties[index];
+        const formUrl = variety.pokemon.url;
+
+        try {
+            // Fetch the form data
+            const entity = await fetchData(formUrl);
+            
+            // Generate HTML using the template and form data
+            const formHtml = pokemonFormsTemplate(entity, index, speciesData);
+            
+            // Store the form HTML
+            formsHtml.push(formHtml);
+        } catch (error) {
+            console.error("Error fetching form data:", error);
+        }
+    }
+
+    // Return all the forms' HTML as a joined string
+    return formsHtml.join("");
 }
 
 // Function to open the ability description with the correct content

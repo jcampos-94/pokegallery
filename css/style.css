@@ -241,9 +241,12 @@ footer {
 }
 
 .pokemon-info {
+    display: grid;
+    align-items: center;
     background-color: #dfdfdf;
     position: relative;
     overflow: hidden;
+    min-height: 230px;
 }
 
 .pokemon-stats {
@@ -284,6 +287,31 @@ footer {
     font-size: 0.8em;
 }
 
+#available-forms h2 {
+    text-align: center;
+}
+
+.available-forms {
+    display: flex;
+    flex-wrap: wrap; /* Ensure cards wrap to the next line if needed */
+    justify-content: center; /* Center the cards in the site */
+}
+
+.form-card {
+    max-width: 250px;
+    max-height: 259px;
+    margin: 30px;
+    border: 2px solid black;
+    border-radius: 10px;
+    background: whitesmoke;
+    box-sizing: border-box;
+    padding: 15px;
+}
+
+.form-card img {
+    max-width: 100%;
+}
+
 /* Pokemon Details End */
 
 /* Pokemon Details Animation Start */
@@ -304,13 +332,22 @@ footer {
     bottom: -100%;  /* Start hidden at the bottom */
     transition: bottom 0.5s ease;
 }
+
+.form-card {
+    transition: max-width 0.3s ease;
+}
+
+.form-card:hover {
+    max-width: 300px;
+    max-height: 309px;
+}
 /* Pokemon Details Animation End */
 
 /* Responsiveness Starts */
 @media only screen and (min-width: 500px) {
     .pokemon-info,
     .pokemon-stats {
-        font-size: 1.4em;
+        font-size: 1.3em;
     }
 }
 
@@ -343,6 +380,8 @@ footer {
     .pokemon-stats {
         padding: 1rem;
         margin: 0;
+        min-width: 350px;
+        min-height: 200px;
     }
     
     .ability-description {
