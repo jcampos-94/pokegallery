@@ -10,13 +10,13 @@ async function pokemonDetailsTemplate(entity, speciesData) {
         <h1 id="species-name">${formatPokemonName(entity.species.name)}</h1>
         <h1 id="species-number">Nº ${speciesData.id.toString().padStart(4,"0")}</h1>
     </section>
-    <div class"pokemon-data">
+    <div class="pokemon-data">
         <section class="pokemon-form">
             <h2>${formatPokemonName(entity.name)}</h2>
             <img id="pokemon-img" src=${entity.sprites.other["official-artwork"].front_default}>
             <div class="types-images">${await getTypesAsImages(entity)}</div>
         </section>
-        <section>
+        <section class="pokemon-details-right">
             <div class="pokemon-info">
                 <p><b>Height:</b> ${entity.height / 10} m</p>
                 <p><b>Weight:</b> ${entity.weight / 10} kg</p>
