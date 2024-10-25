@@ -76,7 +76,6 @@ export async function getTypesAsImages(entity) {
             const url = typeInfo.type.url;
             const typeData = await fetchData(url);
             const typeIconUrl = typeData.sprites["generation-viii"]["sword-shield"].name_icon;
-            console.log(typeIconUrl)
             return `<img src="${typeIconUrl}" alt="${typeInfo.type.name} icon"/>`;
         })
     );
@@ -89,7 +88,7 @@ export async function getTypesAsImages(entity) {
 export function getAbilitiesAsButtons(entities) {
     return entities.abilities
         .map(item => 
-            `<button class="ability-button">${item.ability.name.split("-").map(word => 
+            `<button class="ability-button" data-url="${item.ability.url}">${item.ability.name.split("-").map(word => 
                 word.charAt(0).toUpperCase() + word.slice(1)).join(" ")}</button>`)
         .join(', ');
 }
