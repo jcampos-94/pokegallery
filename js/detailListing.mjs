@@ -35,6 +35,9 @@ async function pokemonDetailsTemplate(entity, speciesData) {
     <section id="available-forms">
         <h2>Available Forms<h2>
         <div class="available-forms">${await getFormsData(speciesData)}</div>
+    </section>
+    <section>
+        <button class="add-fav-btn">Add to Favorites</button>
     </section>`
 }
 
@@ -150,25 +153,69 @@ function closeAbilityDescription() {
 
 export function loadDetailsEventListeners() {
     // Add Event listeners on the site
-document.addEventListener("DOMContentLoaded", () => {
-    // Select the parent container of the abilities
-    const pokemonInfo = document.querySelector(".pokemon-details");
-    
-    // Attach click event listener to the parent container
-    pokemonInfo.addEventListener("click", (event) => {
-        // Check if the clicked target is an ability button
-        const abilityButton = event.target.closest(".ability-button");
-        if (abilityButton) {
-            // Trigger the display of the hidden description div
-            openAbilityDescription(abilityButton);
-        }
+    document.addEventListener("DOMContentLoaded", () => {
+        // Select the parent container of the abilities
+        const pokemonInfo = document.querySelector(".pokemon-details");
+        
+        // Attach click event listener to the parent container
+        pokemonInfo.addEventListener("click", (event) => {
+            // Check if the clicked target is an ability button
+            const abilityButton = event.target.closest(".ability-button");
+            if (abilityButton) {
+                // Trigger the display of the hidden description div
+                openAbilityDescription(abilityButton);
+            }
 
-        // Check if the clicked target is a CLOSE button
-        const closeButton = event.target.closest(".close-btn");
-        if (closeButton) {
-            // Trigger the display of the hidden description div
-            closeAbilityDescription(closeButton);
-        }
+            // Check if the clicked target is a CLOSE button
+            const closeButton = event.target.closest(".close-btn");
+            if (closeButton) {
+                // Trigger the display of the hidden description div
+                closeAbilityDescription(closeButton);
+            }
+
+            // Check if the clicked target is the Add to Favorites button
+            const addButton = event.target.closest(".add-fav-btn");
+            if (addButton) {
+                // Trigger the display of the hidden description div
+                addToFavorites();
+            }
+        });
     });
-});
+}
+
+// Function to save Pokémon details to localStorage
+async function addToFavorites() {
+    const id = getParams('id');
+    const form = getParams('form');
+    
+    try {
+        // Fetch Pokémon species data
+        const speciesData = await fetchData(`https://pokeapi.co/api/v2/pokemon-species/${id}`);
+        
+        // Access the correct form URL and fetch form data
+        const formUrl = speciesData.varieties[form].pokemon.url;
+        const formData = await fetchData(formUrl);
+        
+        // Prepare data to be stored
+        const pokemonData = {
+            id: id,
+            form: form,
+            name: formData.name,
+            sprite: formData.sprites.other["official-artwork"].front_default
+        };
+        
+        // Retrieve current favorites from localStorage or initialize an empty array
+        const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+        
+        // Add the new Pokémon if it’s not already in favorites
+        if (!favorites.find(pokemon => pokemon.id === id && pokemon.form === form)) {
+            favorites.push(pokemonData);
+            localStorage.setItem('favorites', JSON.stringify(favorites));
+            alert(`${formatPokemonName(pokemonData.name)} added to Favorites!`);
+        } else {
+            alert(`${formatPokemonName(pokemonData.name)} is already in Favorites.`);
+        }
+    } catch (error) {
+        console.error("Failed to add to favorites:", error);
+    }
 }

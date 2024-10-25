@@ -7,15 +7,49 @@ header {
     text-align: center;
 }
 
-header a {
+.banner-link {
     display: inline-block;
     margin: 1vw 0;
 }
 
-header img {
+.banner {
     display: block;
     max-width: 80vw;
 }
+
+nav {
+    max-width: 170px;
+    margin: 0 auto;
+    background: #00528d;
+    padding: 15px;
+    border-radius: 10px;
+}
+
+.fav-btn {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color: white;
+    margin: 0;
+}
+
+nav:hover {
+    background: #3b004f;
+}
+
+.fav-icon {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+}
+
+.fav-btn p {
+    font-size: 2em;
+    margin: 0;
+}
+
 /* Header End */
 
 body {
@@ -134,7 +168,7 @@ h2, h3 {
 
 .details-btn {
     display: inline-block;
-    padding: 10px 10px; /* Padding around the button text */
+    padding: 10px; /* Padding around the button text */
     background-color: #00528d; /* Button background color */
     color: white; /* Button text color */
     border: none; /* Remove default border */
@@ -312,6 +346,22 @@ footer {
     max-width: 100%;
 }
 
+.add-fav-btn {
+    display: block;
+    padding: 20px; /* Padding around the button text */
+    background-color: #00528d; /* Button background color */
+    color: white; /* Button text color */
+    border: none; /* Remove default border */
+    border-radius: 5px; /* Rounded corners for the button */
+    cursor: pointer; /* Change cursor to pointer on hover */
+    font-family: "Jost", sans-serif;
+    font-size: 1.4em;
+    text-align: center;
+    text-decoration: none;
+    max-width: 250px;
+    margin: 0 auto;
+}
+
 /* Pokemon Details End */
 
 /* Pokemon Details Animation Start */
@@ -341,7 +391,33 @@ footer {
     max-width: 270px;
     max-height: 279px;
 }
+
+.add-fav-btn:hover {
+    background-color: #3b004f; /* Button background color change */
+}
 /* Pokemon Details Animation End */
+
+/* Pokemon Favorites Start */
+.favorites-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.remove-btn {
+    display: inline-block;
+    padding: 10px;
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: "Jost", sans-serif;
+    font-size: 1.2em;
+    text-align: center;
+}
+
+/* Pokemon Favorites End */
 
 /* Responsiveness Starts */
 @media only screen and (min-width: 500px) {
