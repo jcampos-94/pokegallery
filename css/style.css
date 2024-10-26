@@ -416,8 +416,18 @@ footer {
     font-size: 1.2em;
     text-align: center;
 }
-
 /* Pokemon Favorites End */
+
+/* Pokemon Favorites Aniamtion Starts */
+.fade-out {
+    opacity: 0;
+    transition: opacity 1s ease;
+}
+
+.remove-btn:hover {
+    background-color: #7f0000;
+}
+/* Pokemon Favorites Aniamtion End */
 
 /* Responsiveness Starts */
 @media only screen and (min-width: 500px) {
