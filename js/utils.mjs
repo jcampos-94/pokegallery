@@ -105,3 +105,44 @@ export function getParams(param) {
     const id = urlParams.get(param);
     return id;
 }
+
+// Random Favorites Icon
+// Array of Pokéball image URLs
+const pokeballImages = [
+    'images/balls/beastball.png',
+    'images/balls/cherishball.png',
+    'images/balls/diveball.png',
+    'images/balls/dreamball.png',
+    'images/balls/duskball.png',
+    'images/balls/fastball.png',
+    'images/balls/friendball.png',
+    'images/balls/greatball.png',
+    'images/balls/healball.png',
+    'images/balls/heavyball.png',
+    'images/balls/levelball.png',
+    'images/balls/loveball.png',
+    'images/balls/lureball.png',
+    'images/balls/luxuryball.png',
+    'images/balls/masterball.png',
+    'images/balls/moonball.png',
+    'images/balls/nestball.png',
+    'images/balls/netball.png',
+    'images/balls/parkball.png',
+    'images/balls/pokeball.png',
+    'images/balls/premierball.png',
+    'images/balls/quickball.png',
+    'images/balls/repeatball.png',
+    'images/balls/safariball.png',
+    'images/balls/sportball.png',
+    'images/balls/strangeball.png',
+    'images/balls/timerball.png',
+    'images/balls/ultraball.png',
+];
+
+
+export function setFavoritesLogo(urlBase="") {
+    // Select a random image URL
+    const randomImage = pokeballImages[Math.floor(Math.random() * pokeballImages.length)];
+    // Assign the random image to the src attribute of the img element
+    document.querySelector(".fav-icon").src = urlBase + randomImage;
+}

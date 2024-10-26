@@ -362,6 +362,15 @@ footer {
     margin: 0 auto;
 }
 
+.favorite-message {
+    text-align: center;
+    margin-bottom: 20px;
+    font-family: "Jost", sans-serif;
+    font-size: 1.3em;
+    font-weight: 500;
+    color: #00528d;
+}
+
 /* Pokemon Details End */
 
 /* Pokemon Details Animation Start */
@@ -416,8 +425,18 @@ footer {
     font-size: 1.2em;
     text-align: center;
 }
-
 /* Pokemon Favorites End */
+
+/* Pokemon Favorites Aniamtion Starts */
+.fade-out {
+    opacity: 0;
+    transition: opacity 1s ease;
+}
+
+.remove-btn:hover {
+    background-color: #7f0000;
+}
+/* Pokemon Favorites Aniamtion End */
 
 /* Responsiveness Starts */
 @media only screen and (min-width: 500px) {

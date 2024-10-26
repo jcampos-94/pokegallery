@@ -1,4 +1,4 @@
-import { renderFavoritePokemon } from "./favoritesListing.mjs";
+import { renderFavoritePokemon, initializeRemoveButtons } from "./favoritesListing.mjs";
 
 // Render favorites
 renderFavoritePokemon();
@@ -15,4 +15,6 @@ document.addEventListener("DOMContentLoaded", () => {
             innerCard.classList.toggle("flipped"); // Toggle the flip class
         }
     });
+
+    initializeRemoveButtons();
 });

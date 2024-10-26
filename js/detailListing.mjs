@@ -208,14 +208,41 @@ async function addToFavorites() {
         const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
         
         // Add the new Pokémon if it’s not already in favorites
+        let message;
         if (!favorites.find(pokemon => pokemon.id === id && pokemon.form === form)) {
             favorites.push(pokemonData);
             localStorage.setItem('favorites', JSON.stringify(favorites));
-            alert(`${formatPokemonName(pokemonData.name)} added to Favorites!`);
+            message = `${formatPokemonName(pokemonData.name)} added to Favorites!`;
         } else {
-            alert(`${formatPokemonName(pokemonData.name)} is already in Favorites.`);
+            message = `${formatPokemonName(pokemonData.name)} is already in Favorites.`;
         }
+
+        showMessageAboveButton(message);
+
     } catch (error) {
         console.error("Failed to add to favorites:", error);
     }
+}
+
+// Show a message above the button
+function showMessageAboveButton(message) {
+    // Remove any existing messages
+    const existingMessage = document.querySelector('.favorite-message');
+    if (existingMessage) {
+        existingMessage.remove();
+    }
+    
+    // Create a new message element
+    const messageElement = document.createElement('div');
+    messageElement.classList.add('favorite-message');
+    messageElement.textContent = message;
+    
+    // Position the message element
+    const button = document.querySelector('.add-fav-btn');
+    button.parentNode.insertBefore(messageElement, button);
+    
+    // Automatically remove the message after a few seconds
+    setTimeout(() => {
+        messageElement.remove();
+    }, 2000);
 }

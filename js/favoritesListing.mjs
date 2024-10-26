@@ -3,7 +3,7 @@ import { formatPokemonName } from "./utils.mjs"
 
 // Template for the Favorites card
 function pokemonCardTemplate(entity) {
-    return `<div class="pokemon-card">
+    return `<div class="pokemon-card" data-id="${entity.id}" data-form="${entity.form}">
         <div class="pokemon-card-inner">
             <!-- Front of the card -->
             <div class="pokemon-card-front">
@@ -31,4 +31,41 @@ export function renderFavoritePokemon() {
 
     // Render all the cards
     favoritesList.innerHTML = allCardsHtml.join("");
+}
+
+// Function to initialize event listeners for removal
+export function initializeRemoveButtons() {
+    const favoritesList = document.querySelector(".favorites-list");
+
+    favoritesList.addEventListener("click", (event) => {
+        const removeButton = event.target.closest(".remove-btn");
+        
+        if (removeButton) {
+            const card = removeButton.closest(".pokemon-card");
+            const id = card.getAttribute("data-id");
+            const form = card.getAttribute("data-form");
+
+            // Add a fade-out effect before removal
+            card.classList.add("fade-out");
+            card.addEventListener("transitionend", () => {
+                card.remove();
+            });
+
+            // Remove the Pokémon from localStorage
+            removeFromLocalStorage(id, form);
+        }
+    });
+}
+
+// Function to remove Pokémon from localStorage
+function removeFromLocalStorage(id, form) {
+    let storedFavorites = JSON.parse(localStorage.getItem("favorites")) || [];
+
+    // Filter out the specific Pokémon by matching both id and form
+    storedFavorites = storedFavorites.filter(pokemon => {
+        const match = pokemon.id === id && pokemon.form === form;
+        return !match;
+    });
+
+    localStorage.setItem("favorites", JSON.stringify(storedFavorites));
 }
