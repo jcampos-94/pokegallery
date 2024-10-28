@@ -25,7 +25,7 @@ function pokemonCardTemplate(entities) {
             <!-- Front of the card -->
             <div class="pokemon-card-front">
                 <h2>${formatPokemonName(entities.species.name)}</h2>
-                <img src=https://resource.pokemon-home.com/battledata/img/pokei128/icon${entities.id.toString().padStart(4,"0")}_f00_s0.png>
+                <img src=https://resource.pokemon-home.com/battledata/img/pokei128/icon${entities.id.toString().padStart(4,"0")}_f00_s0.png loading="lazy" alt="${entities.species.name}">
             </div>
             <!-- Back of the card -->
             <div class="pokemon-card-back">
@@ -82,7 +82,7 @@ async function fetchAndRenderBatch(listElement, entitiesBatch, signal) {
 }
 
 // Handle region selection and rendering
-export async function renderCardWithTemplate(region) {
+export async function renderCardWithTemplate(region, searchText="") {
     // Get pokemon-list element from index.html
     let listElement = document.querySelector(".pokemon-list");
 
@@ -107,7 +107,16 @@ export async function renderCardWithTemplate(region) {
         const sortedEntries = sortPokemonById(entitiesList.pokemon_entries);
     
         // Filter Pokemon entries based on the selected region
-        const filteredPokemonEntries = filterByRegion(sortedEntries, regionIdRanges, region);
+        let filteredPokemonEntries = filterByRegion(sortedEntries, regionIdRanges, region);
+
+        // Further filter by search text if no empty
+        if (searchText) {
+            const searchTextLower = searchText.toLowerCase();
+            filteredPokemonEntries = filteredPokemonEntries.filter(entry =>
+                formatPokemonName(entry.pokemon_species.name).toLowerCase().includes(searchTextLower) || 
+                entry.entry_number.toString().includes(searchText)
+            );
+        }
         
         // Process each entity in small batches
         const batchSize = 10;
@@ -125,4 +134,59 @@ export async function renderCardWithTemplate(region) {
             console.error("Error fetching Pokemon data:", error);
         }
     }
+}
+
+// Function to show the search bar once a region is selected
+function showSearchBar() {
+    const searchBarContainer = document.getElementById("search-bar-container");
+    searchBarContainer.classList.remove("hidden");
+}
+
+// Function to clear search bar and reset the Pokemon list
+function clearSearchBar() {
+    const searchInput = document.getElementById("search-bar");
+    searchInput.value = ""; // Clear the search bar
+}
+
+// Main site event listeners
+export function loadMainEventListeners() {
+    // Select the Region dropdown
+    const regionDropdown = document.querySelector("#selectRegion");
+
+    // Select search bar
+    const searchInput = document.getElementById("search-bar");
+
+    // Add event listener for the region selection dropdown
+    regionDropdown.addEventListener("change", (event) => {
+        const selectedRegion = event.target.value;
+
+        // Render the list
+        if (selectedRegion) {
+            showSearchBar();
+            clearSearchBar();
+            let searchText = searchInput.value.trim()
+            renderCardWithTemplate(selectedRegion, searchText);
+        }
+
+        // Listen for real-time search input
+        searchInput.addEventListener("input", () => {
+            let searchText = searchInput.value.trim(); // Capture search text
+            renderCardWithTemplate(selectedRegion, searchText);
+        });
+    });
+
+    // Wait until the content is loaded
+    document.addEventListener("DOMContentLoaded", () => {
+    // Select the pokemon list
+    const cardContainer = document.querySelector(".pokemon-list");
+    
+    // Attach click event to the parent container
+    cardContainer.addEventListener("click", (event) => {
+        const innerCard = event.target.closest(".pokemon-card-inner"); // Find the closest inner card clicked
+        if (innerCard) {
+            innerCard.classList.toggle("flipped"); // Toggle the flip class
+        }
+    });
+});
+
 }
