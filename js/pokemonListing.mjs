@@ -113,7 +113,7 @@ export async function renderCardWithTemplate(region, searchText="") {
         if (searchText) {
             const searchTextLower = searchText.toLowerCase();
             filteredPokemonEntries = filteredPokemonEntries.filter(entry =>
-                entry.pokemon_species.name.includes(searchTextLower) || 
+                formatPokemonName(entry.pokemon_species.name).toLowerCase().includes(searchTextLower) || 
                 entry.entry_number.toString().includes(searchText)
             );
         }
