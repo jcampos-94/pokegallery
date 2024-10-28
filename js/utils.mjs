@@ -20,6 +20,14 @@ export function filterByRegion(entries, regionIdRanges, region) {
     );
 }
 
+// Text Formatting Logic
+function formatText(text) {
+    return text
+        .split("-")
+        .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+        .join(" ");
+}
+
 // Format Pokemon names
 export function formatPokemonName(name) {
     // Special cases for Nidoran
@@ -47,25 +55,20 @@ export function formatPokemonName(name) {
     }
 
     // Capitalize first letter of each word and replace hyphens with spaces
-    return name
-        .split("-")
-        .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-        .join(" ");
+    return formatText(name);
 }
 
 // General function to return a comma separated list
 // from an array extracted from the API
 export function getPropertyString(entities, property, key) {
-    return entities[property].map(item => item[key].name.split("-").map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(" ")).join(', ');
+    return entities[property].map(item => formatText(item[key].name)).join(', ');
 }
 
 // Return stats as <li> elements
 // from an array extracted from the API
 export function getStatsList(entity) {
     return entity["stats"].map(item => 
-        `<li><b>${item["stat"].name.split("-").map(word => 
-            word.charAt(0).toUpperCase() + word.slice(1)
-        ).join(" ")}:</b> ${item.base_stat}</li>`
+        `<li><b>${formatText(item["stat"].name)}:</b> ${item.base_stat}</li>`
     ).join(''); // Joining without separator so it returns a string of <li> elements
 }
 
@@ -102,8 +105,8 @@ export function getTotalBaseStats(entities) {
 export function getParams(param) {
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
-    const id = urlParams.get(param);
-    return id;
+    const parameter = urlParams.get(param);
+    return parameter;
 }
 
 // Random Favorites Icon

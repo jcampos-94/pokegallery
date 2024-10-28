@@ -129,6 +129,22 @@ font-family: "Jost", sans-serif;
 
 /* Pokemon Cards Start */
 
+/* Search Bar */
+#search-bar-container {
+    margin-bottom: 20px;
+}
+
+#search-bar {
+    height: 30px;
+    min-width: 250px;
+    margin-left: 15px;
+    padding-left: 15px;
+    border: 2px solid black;
+    border-radius: 5px;
+    font-family: "Jost", sans-serif;
+    font-size: 1.1em;
+}
+
 /* Styles for Pokemon cards */
 .pokemon-card {
     width: 195px; /* To fit at least one full card on smaller devices */
