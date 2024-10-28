@@ -8,7 +8,7 @@ function pokemonCardTemplate(entity) {
             <!-- Front of the card -->
             <div class="pokemon-card-front">
                 <h2>${formatPokemonName(entity.name)}</h2>
-                <img src=${entity.sprite}>
+                <img src=${entity.sprite} loading="lazy" alt="${entity.name}">
             </div>
             <!-- Back of the card -->
             <div class="pokemon-card-back">
