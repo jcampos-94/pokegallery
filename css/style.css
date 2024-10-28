@@ -78,6 +78,34 @@ h2, h3 {
     font-style: normal;
 }
 
+/* General Elements Settings*/
+/* Back to Top Button */
+.back-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #333;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    z-index: 1000;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+
+font-family: "Jost", sans-serif;
+    font-size: 1.2em;
+}
+
+.back-to-top:hover {
+    opacity: 1;
+}
+
+.hidden {
+    display: none;
+}
+
 /* Symbols Settings */
 .material-symbols-outlined {
     position: relative;

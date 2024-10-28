@@ -146,3 +146,27 @@ export function setFavoritesLogo(urlBase="") {
     // Assign the random image to the src attribute of the img element
     document.querySelector(".fav-icon").src = urlBase + randomImage;
 }
+
+// Back to top button functionality
+export function backToTopButton() {
+    document.addEventListener("DOMContentLoaded", () => {
+        const backToTopButton = document.querySelector(".back-to-top");
+    
+        // Show or hide the button based on scroll position
+        window.addEventListener("scroll", () => {
+            if (window.scrollY > 300) { // Show after scrolling down 300px
+                backToTopButton.classList.remove("hidden");
+            } else {
+                backToTopButton.classList.add("hidden");
+            }
+        });
+    
+        // Scroll to top when the button is clicked
+        backToTopButton.addEventListener("click", () => {
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+        });
+    });
+}
